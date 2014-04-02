@@ -7,7 +7,8 @@ function PixelPixel() {
 	this._event = {};
 
 	this.layer = 0;
-	this.layers = [new PixelPixel.Layer(this)];
+	this.layers = [];
+	this.addLayer();
 
 	this.pen = 'black';
 
