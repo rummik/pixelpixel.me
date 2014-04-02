@@ -12,7 +12,11 @@ function PixelPixel() {
 
 	this.pen = 'black';
 
+	this.ui = document.createElement('div');
+
 	this.canvas = document.createElement('canvas');
+	this.ui.appendChild(this.canvas);
+
 	this.ctx = this.canvas.getContext('2d');
 	this.ctx.webkitImageSmoothingEnabled = false;
 
