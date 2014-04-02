@@ -6,6 +6,8 @@ function Layer(pxpx) {
 
 	this.type = 'hat';
 
+	this.pallet = [];
+
 	for (var i=+(this.data=[]); i<32; this.data[i++] = new Array(32));
 }
 

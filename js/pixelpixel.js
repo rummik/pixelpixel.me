@@ -14,6 +14,9 @@ function PixelPixel() {
 
 	this.ui = document.createElement('div');
 
+	this.pallet = new PixelPixel.Pallet(this);
+	this.ui.appendChild(this.pallet.ui);
+
 	this.canvas = document.createElement('canvas');
 	this.ui.appendChild(this.canvas);
 
