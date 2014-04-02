@@ -4,6 +4,8 @@
 function PixelPixel() {
 	var self = this;
 
+	this._event = {};
+
 	this.layer = 0;
 	this.layers = [new PixelPixel.Layer(this)];
 
@@ -55,8 +57,23 @@ function PixelPixel() {
 		self.draw();
 		self.drawGrid();
 	})();
-
 }
+
+PixelPixel.prototype.on = function(event, callback) {
+	if (!Object.hasOwnProperty.call(this._event, event))
+		this._event[event] = [];
+
+	this._event[event].push(callback);
+};
+
+PixelPixel.prototype.emit = function trigger(event, data) {
+	if (!Object.hasOwnProperty.call(this._event, event))
+		throw new Error('Unknown event ' + event);
+
+	this._event[event].forEach(function(callback) {
+		callback(data);
+	});
+};
 
 PixelPixel.prototype.addLayer = function addLayer() {
 	this.layers.push(new PixelPixel.Layer(this));
