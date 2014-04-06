@@ -67,14 +67,14 @@ function PixelPixel() {
 	})();
 }
 
-PixelPixel.prototype.on = function(event, callback) {
+PixelPixel.prototype.on = function on(event, callback) {
 	if (!Object.hasOwnProperty.call(this._event, event))
 		this._event[event] = [];
 
 	this._event[event].push(callback);
 };
 
-PixelPixel.prototype.emit = function trigger(event, data) {
+PixelPixel.prototype.emit = function emit(event, data) {
 	if (!Object.hasOwnProperty.call(this._event, event))
 		throw new Error('Unknown event ' + event);
 
