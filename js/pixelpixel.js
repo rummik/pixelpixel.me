@@ -133,4 +133,9 @@ PixelPixel.prototype.drawGrid = function drawGrid() {
 
 window.PixelPixel = PixelPixel;
 
+window.onload = function() {
+	window.pxpx = new PixelPixel();
+	document.body.appendChild(window.pxpx.ui);
+};
+
 })();
