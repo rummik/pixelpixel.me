@@ -10,7 +10,21 @@ function PixelPixel() {
 	this.layers = [];
 	this.addLayer();
 
-	this.pen = 'black';
+	var pen = 'black';
+
+	Object.defineProperty(this, 'pen', {
+		get: function getPen() {
+			return pen;
+		},
+
+		set: function setPen(color) {
+			if (typeof color != 'string')
+				return;
+
+			pen = color;
+			self.emit('penchange');
+		},
+	});
 
 	this.ui = document.createElement('div');
 
