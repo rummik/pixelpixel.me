@@ -40,12 +40,14 @@ function PixelPixel() {
 	this.canvas.width =
 	this.canvas.height = Math.floor(Math.min(screen.width, screen.height) / 32) * 32;
 
-	this.canvas.oncontextmenu = function contextmenu(event) {
+	function prevent(event) {
 		if (!event.shiftKey) {
 			event.preventDefault();
 			return false;
 		}
-	};
+	}
+
+	this.canvas.oncontextmenu = prevent;
 
 	var drawing = false;
 	var color = 'black';
@@ -53,6 +55,9 @@ function PixelPixel() {
 		drawing = true;
 		color = event.button == 0 ? self.pen : undefined;
 		this.onmousemove(event);
+
+		// prevent selection from happening
+		return prevent(event);
 	};
 
 	this.canvas.onmouseup = function mouseup() {
