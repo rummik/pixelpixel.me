@@ -80,7 +80,7 @@ function PixelPixel() {
 	(window.onresize = function resize() {
 		var size = Math.min(window.innerWidth, window.innerHeight);
 		self.canvas.width =
-		self.canvas.height = size;
+		self.canvas.height = size - 2;
 		self.draw();
 		self.drawGrid();
 	})();
